@@ -1,0 +1,22 @@
+server:
+ port: 3333
+ servlet:
+   context-path: /
+spring:
+ mvc:
+   pathmatch:
+     matching-strategy: ANT_PATH_MATCHER
+ jpa:
+   generate-ddl: true
+   hibernate:
+     ddl-auto: none
+   show-sql: false
+   properties:
+     hibernate.default_schema: public
+     hibernate.format_sql: true
+     hibernate.jdbc.time_zone: UTC
+ datasource:
+   driver-class-name: org.postgresql.Driver
+   url: jdbc:postgresql://localhost:5432/blu
+   username: postgres
+   password: "0000"
