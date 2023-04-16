@@ -30,7 +30,6 @@ public class Client {
 	public String prenom;
 	public String naissance;
 	public String adresse;
-	public int numbertimemonth;
 	
 	public Client() {}
 	public Client(String genre,String nom, String prenom, String naissance, String adresse) {
@@ -39,6 +38,5 @@ public class Client {
 		this.prenom = prenom;
 		this.naissance = naissance;
 		this.adresse = adresse;
-		this.numbertimemonth = 1;
 	}
 }

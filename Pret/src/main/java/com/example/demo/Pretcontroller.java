@@ -23,28 +23,33 @@ public class Pretcontroller {
 	@Autowired
 	private Pretservice pretservice;
 
-	@GetMapping("/getallprets") // return all prets saved in DB ok
+	@GetMapping("/getallprets") // Give all prets in DB
     public List<Pret> getAllinBd() {
         return pretservice.getAllinBd();
     }
-	@PostMapping(value= "/fairepret") // faire un pret
+	@PostMapping(value= "/fairepret") // Do a pret 
 	public Pret fairepret(@RequestParam Long isbn,@RequestParam Long id) {
 		return pretservice.save(isbn,id);
 	}
-	@PostMapping(value= "/retourpret") // retour un pret
+	@PostMapping(value= "/retourpret") // Retour d'un pret
 	public Pret retourpret(@RequestParam Long isbn,@RequestParam Long id) {
 		return pretservice.retourpret(isbn,id);
 	}
-	@GetMapping("/encours") // pret en cours 
+	@GetMapping("/encours") // Donne tous les prets en cours
 	public List<Pret> encours(){
 		return pretservice.encours();
 	}
-	@GetMapping("/bydateemprunt") // chercher prets par date emprunt
+	@GetMapping("/bydateemprunt") // Give les prets par date d'emprunt
 	public List<Pret> bydateemprunt(@RequestParam String datepret){
 		return pretservice.bydateemprunt(datepret);
 	}
-	@GetMapping("/byidclient") // chercher prets par date emprunt
+	@GetMapping("/byidclient") // Give les prets par Idclient 
 	public List<Pret> byidclient(@RequestParam Long id){
 		return pretservice.byidclient(id);
 	}
+	@GetMapping("/deletepret") 
+	public boolean delete(@RequestParam Long id){
+		return pretservice.delete(id);
+	}
+	
 }

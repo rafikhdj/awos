@@ -22,32 +22,44 @@ public class Livrecontroller {
 	@Autowired
 	private Livreservice livreservice;
 	
-	@GetMapping("/getbookbyisbn") //ok
+	@GetMapping("/getbookbyisbn") //Give the Book using the ISBN
     public Optional<Livre> getBookByISBN(@RequestParam Long isbn) {
         return livreservice.getBookByISBN(isbn);
     }
-	@GetMapping("/getallbooks") // return all books saved in DB ok
+	@GetMapping("/getallbooks") // return all books saved in DB 
     public List<Livre> getAllinBd() {
         return livreservice.getAllinBd();
     }
-	@GetMapping(value = "/undermaintenance") // true if the server is under maintenance ok
-	public boolean under_maintenance() {
-		return livreservice.under_maintenance();
-	}
-	@GetMapping(value= "/givemaxonemonthbook") // the most sought-after book this month ok
-	public Livre givemaxonemonth() {
-		return livreservice.givemaxonemonth();
-	}
-	@GetMapping(value= "/givefivemaxonemonthbook") //The 5 most sought-after books this month ok
-	public List<Livre> givefivemaxonemonth() {
-		return livreservice.givefivemaxonemonth();
-	}
-	@PostMapping(value= "/savebook") // save a book in DB ok
+	@PostMapping(value= "/savebook") // save a book in DB 
 	public Livre save(@RequestParam String auteur,@RequestParam String titre,@RequestParam String editeur,@RequestParam String edition,@RequestParam int quantitedispo) {
 		return livreservice.save(auteur,titre,editeur,edition,quantitedispo);
 	}
-	@PutMapping(value= "/rendubook") //when we give back a book
+	@PostMapping(value= "/rendubook") //when we give back a book -> quantite dispo +1
 	public Livre rendubook(@RequestParam Long isbn) {
 		return livreservice.rendubook(isbn);
 	}
+	@PostMapping(value= "/fairepret") // when take a book -> quantite dispo -1
+	public Livre fairepret(@RequestParam Long isbn) {
+		return livreservice.fairepret(isbn);
+	}
+	@GetMapping(value="/deletebook") //delete a book in DB
+	public boolean deletebook(@RequestParam Long isbn) {
+		 return livreservice.deletebook(isbn);
+	}
+	@GetMapping("/getbookbyauteur")  // All the Books available with this auteur 
+    public List<Livre> getBookByAuteur(@RequestParam String auteur) {
+        return livreservice.getBookByAuteur(auteur);
+    }
+	@GetMapping("/getbookbytitre") // All the Books available with this title 
+    public List<Livre> getBookByTitre(@RequestParam String titre) {
+        return livreservice.getBookByTitre(titre);
+    }
+	@GetMapping("/getbookbyediteur")  // All the Books available with this editeur 
+    public List<Livre> getBookByEditeur(@RequestParam String editeur) {
+        return livreservice.getBookByEditeur(editeur);
+    }
+	@GetMapping("/getbookbyedition")  // All the Books available with this edition 
+    public List<Livre> getBookByEdition(@RequestParam String edition) {
+        return livreservice.getBookByEdition(edition);
+    }
 }

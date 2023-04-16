@@ -1,0 +1,56 @@
+version: '2'
+
+services:
+  client:
+    image: 'client:latest'
+    build:
+      context: .
+    container_name: client
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mol
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=docker
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "3333:3333"
+  livre:
+    image: 'livre:latest'
+    build:
+      context: .
+    container_name: livre
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mol
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=docker
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "1111:1111"
+  pret:
+    image: 'pret:latest'
+    build:
+      context: .
+    container_name: pret
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mol
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=docker
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "2222:2222"
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_DB=mol
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+    volumes:
+      - ./postgres-data:/var/lib/postgresql@13/data
+    ports:
+      - "5432:5432"

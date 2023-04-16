@@ -30,7 +30,6 @@ public class Livre {
 	public String editeur;
 	public String edition;
 	public int quantitedispo;
-	public int numbertimemonth;
 	
 	public Livre() {}
 	public Livre(String auteur,String titre, String editeur, String edition, int quantitedispo) {
@@ -39,6 +38,5 @@ public class Livre {
 		this.editeur = editeur;
 		this.edition = edition;
 		this.quantitedispo = quantitedispo;
-		this.numbertimemonth = 1;
 	}
 }

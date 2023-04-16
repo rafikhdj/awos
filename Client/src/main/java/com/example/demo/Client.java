@@ -38,8 +38,6 @@ public class Client {
 	public String naissance;
 	@Column(name="adresse")
 	public String adresse;
-	@Column(name="numbertimemonth")
-	public int numbertimemonth;
 	
 	public Client() {}
 	public Client(String genre,String nom, String prenom, String naissance, String adresse) {
@@ -48,9 +46,8 @@ public class Client {
 		this.prenom = prenom;
 		this.naissance = naissance;
 		this.adresse = adresse;
-		this.numbertimemonth = 1;
 	}
-	public void change_number_time_month() {
-		this.numbertimemonth=1;
+	public Long get_Id() {
+		return this.id;
 	}
 }

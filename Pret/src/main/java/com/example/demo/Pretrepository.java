@@ -11,8 +11,9 @@ public interface Pretrepository extends JpaRepository<Pret, Long> {
 	Pret save(Pret a);
 	List<Pret> findAll();
 	List<Pret> findByIsbnAndIdclient(Long isbn, Long idclient);
-	//Long deleteByIsbnandIdclient(Long isbn, Long idclient);
 	List<Pret> findByDateretour(String dateretour);
 	List<Pret> findByDatepret(String datepret);
 	List<Pret> findByIdclient(Long idclient);
+	Optional<Pret> findById(Long id);
+	void delete(Pret p);
 }

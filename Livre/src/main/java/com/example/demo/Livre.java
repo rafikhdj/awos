@@ -38,8 +38,6 @@ public class Livre {
 	public String edition;
 	@Column(name="quantitedispo")
 	public int quantitedispo;
-	@Column(name="numbertimemonth")
-	public int numbertimemonth;
 	
 	public Livre() {}
 	public Livre(String auteur,String titre, String editeur, String edition, int quantitedispo) {
@@ -48,10 +46,8 @@ public class Livre {
 		this.editeur = editeur;
 		this.edition = edition;
 		this.quantitedispo = quantitedispo;
-		this.numbertimemonth = 1;
 	}
-	public void change_number_time_month() {
-		this.numbertimemonth=1;
+	public Long get_isbn() {
+		return this.isbn;
 	}
-	
 }

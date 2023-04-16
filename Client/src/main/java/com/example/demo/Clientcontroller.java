@@ -23,24 +23,24 @@ public class Clientcontroller {
 	@Autowired
 	private Clientservice clientservice;
 	
-	@GetMapping("/getclientbyid") //ok
+	@GetMapping("/getclientbyid") // Give the client using ID
     public Optional<Client> getClientbyID(@RequestParam Long id) {
         return clientservice.getClientbyID(id);
     }
-	@GetMapping("/getallclients") // return all clients saved in DB ok
+	@GetMapping("/getallclients") // return all clients saved in DB
     public List<Client> getAllinBd() {
         return clientservice.getAllinBd();
     }
-	@GetMapping(value= "/givemaxonemonthclient") //the customer who use the system the most ok
-	public Client givemaxonemonth() {
-		return clientservice.givemaxonemonth();
-	}
-	@GetMapping(value= "/givefivemaxonemonthclient") //the 5 customers who use the system the most ok
-	public List<Client> givefivemaxonemonth() {
-		return clientservice.givefivemaxonemonth();
-	}
-	@PostMapping(value= "/saveclient") // save a client in DB ok
+	@PostMapping(value= "/saveclient") // save a client in DB 
 	public Client save(@RequestParam String genre,@RequestParam String nom,@RequestParam String prenom,@RequestParam String naissance,@RequestParam String adresse) {
 		return clientservice.save(genre,nom,prenom,naissance,adresse);
 	}
+	@GetMapping("/getclientbynomandprenom") 
+    public List<Client> getClientbyNomAndPrenom(@RequestParam String nom, @RequestParam String prenom) {
+        return clientservice.getClientbyNomAndPrenom(nom,prenom);
+    }
+	@GetMapping("/deleteclient") 
+    public boolean deleteclient(@RequestParam Long id) {
+        return clientservice.deleteclient(id);
+    }
 }

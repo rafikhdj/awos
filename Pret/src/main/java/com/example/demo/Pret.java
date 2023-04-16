@@ -46,5 +46,7 @@ public class Pret {
 		this.datepret=datepret;
 		this.dateretour=dateretour;
 	}
-	
+	public Long get_id() {
+		return this.id;
+	}
 }

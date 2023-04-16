@@ -17,6 +17,6 @@ spring:
      hibernate.jdbc.time_zone: UTC
  datasource:
    driver-class-name: org.postgresql.Driver
-   url: jdbc:postgresql://localhost:5432/blu
+   url: jdbc:postgresql://localhost:5432/mol
    username: postgres
    password: "0000"
